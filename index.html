@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RGB Color Mixer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>RGB Color Mixer</h1>
+
+  <div class="controls">
+    <label>Red:
+      <input id="r" type="range" min="0" max="255" value="255" />
+    </label>
+    <label>Green:
+      <input id="g" type="range" min="0" max="255" value="0" />
+    </label>
+    <label>Blue:
+      <input id="b" type="range" min="0" max="255" value="0" />
+    </label>
+  </div>
+
+  <div class="preview" id="preview"></div>
+  <p>Closest color name: <strong id="closestName"></strong></p>
+
+  <script src="script.js"></script>
+</body>
+</html>
