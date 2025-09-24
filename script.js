@@ -43,11 +43,11 @@ const closestName = document.getElementById("closestName"); // O
 /*function afstand(x1, y1, x2, y2) {
   return Math.sqrt((x1 - x2)**2 + (y1 - y2)**2);
 }*/
-
 function distance2(r1, g1, b1, r2, g2, b2) {
   return (r1 - r2) ** 2 + (g1 - g2) ** 2 + (b1 - b2) ** 2;
 }
 
+/*
 // Find the closest named color
 function findClosestName(r, g, b) {
   let best = NAMED_COLORS[0];
@@ -61,6 +61,23 @@ function findClosestName(r, g, b) {
     }
   }
   return best.name; // O: returns the closest color name as a string
+}
+*/
+function findClosestName(r, g, b) {
+  let best = NAMED_COLORS[0];
+  let bestDist = distance2(r, g, b, best.r, best.g, best.b);
+
+  for (let i = 0; i < NAMED_COLORS.length; i++) {
+    const c = NAMED_COLORS[i]; // pick the i-th color object
+    const d = distance2(r, g, b, c.r, c.g, c.b);
+
+    if (d < bestDist) {
+      bestDist = d;
+      best = c;
+    }
+  }
+
+  return best.name;
 }
 
 // Update the preview box and color name
