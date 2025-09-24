@@ -51,3 +51,21 @@ function findClosestName(r, g, b) {
   }
   return best.name; // O: returns the closest color name as a string
 }
+
+// Update the preview box and color name
+function update() {
+  const R = parseInt(r.value); // I: read Red slider value
+  const G = parseInt(g.value); // I: read Green slider value
+  const B = parseInt(b.value); // I: read Blue slider value
+
+  preview.style.backgroundColor = `rgb(${R}, ${G}, ${B})`; // O: show mixed color
+  closestName.textContent = findClosestName(R, G, B);      // O: show nearest color name
+}
+
+// Event listeners
+r.addEventListener("input", update); // I: reacts to user moving Red slider
+g.addEventListener("input", update); // I: reacts to user moving Green slider
+b.addEventListener("input", update); // I: reacts to user moving Blue slider
+
+// Initial render
+update(); // O: make sure the box and name show on page load

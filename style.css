@@ -1,0 +1,6 @@
+.preview {
+  width: 100px;
+  height: 100px;
+  border: 1px solid var(--border);
+  margin: 0 auto 12px;
+}
