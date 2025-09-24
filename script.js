@@ -19,9 +19,18 @@ const NAMED_COLORS = [
   { name: "salmon", r: 250, g: 128, b: 114 },
   { name: "coral", r: 255, g: 127, b: 80 },
   { name: "khaki", r: 240, g: 230, b: 140 },
-  { name: "turquoise", r: 64, g: 224, b: 208 }
+  { name: "turquoise", r: 64, g: 224, b: 208 },
+  { name: "indigo", r: 75, g: 0, b: 130 },
+  { name: "lavender", r: 230, g: 230, b: 250 },
+  { name: "beige", r: 245, g: 245, b: 220 },
+  { name: "lime", r: 0, g: 255, b: 0 },
+  { name: "maroon", r: 128, g: 0, b: 0 },
+  { name: "lightgray", r: 211, g: 211, b: 211 },
+  { name: "aliceblue", r: 240, g: 248, b: 255 },
+  { name: "mintcream", r: 245, g: 255, b: 250 },
+  { name: "honeydew", r: 240, g: 255, b: 240 },
+  { name: "linen", r: 250, g: 240, b: 230 }
 ];
-console.log("NAMED_COLORS loaded:", NAMED_COLORS.length);
 
 // DOM elements connect
 const r = document.getElementById("r");             // I
@@ -30,9 +39,11 @@ const b = document.getElementById("b");             // I
 const preview = document.getElementById("preview"); // O: color box background
 const closestName = document.getElementById("closestName"); // O
 
-console.log("Initial slider values:", r.value, g.value, b.value);
-
 // Helper: squared distance between two colors
+/*function afstand(x1, y1, x2, y2) {
+  return Math.sqrt((x1 - x2)**2 + (y1 - y2)**2);
+}*/
+
 function distance2(r1, g1, b1, r2, g2, b2) {
   return (r1 - r2) ** 2 + (g1 - g2) ** 2 + (b1 - b2) ** 2;
 }
