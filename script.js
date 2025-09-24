@@ -1,0 +1,53 @@
+ // Array of color names with RGB values
+const NAMED_COLORS = [
+  { name: "black", r: 0, g: 0, b: 0 },
+  { name: "white", r: 255, g: 255, b: 255 },
+  { name: "gray", r: 128, g: 128, b: 128 },
+  { name: "red", r: 255, g: 0, b: 0 },
+  { name: "green", r: 0, g: 128, b: 0 },
+  { name: "blue", r: 0, g: 0, b: 255 },
+  { name: "yellow", r: 255, g: 255, b: 0 },
+  { name: "cyan", r: 0, g: 255, b: 255 },
+  { name: "magenta", r: 255, g: 0, b: 255 },
+  { name: "orange", r: 255, g: 165, b: 0 },
+  { name: "pink", r: 255, g: 192, b: 203 },
+  { name: "purple", r: 128, g: 0, b: 128 },
+  { name: "brown", r: 165, g: 42, b: 42 },
+  { name: "navy", r: 0, g: 0, b: 128 },
+  { name: "teal", r: 0, g: 128, b: 128 },
+  { name: "gold", r: 255, g: 215, b: 0 },
+  { name: "salmon", r: 250, g: 128, b: 114 },
+  { name: "coral", r: 255, g: 127, b: 80 },
+  { name: "khaki", r: 240, g: 230, b: 140 },
+  { name: "turquoise", r: 64, g: 224, b: 208 }
+];
+console.log("NAMED_COLORS loaded:", NAMED_COLORS.length);
+
+// DOM elements connect
+const r = document.getElementById("r");             // I
+const g = document.getElementById("g");             // I
+const b = document.getElementById("b");             // I
+const preview = document.getElementById("preview"); // O: color box background
+const closestName = document.getElementById("closestName"); // O
+
+console.log("Initial slider values:", r.value, g.value, b.value);
+
+// Helper: squared distance between two colors
+function distance2(r1, g1, b1, r2, g2, b2) {
+  return (r1 - r2) ** 2 + (g1 - g2) ** 2 + (b1 - b2) ** 2;
+}
+
+// Find the closest named color
+function findClosestName(r, g, b) {
+  let best = NAMED_COLORS[0];
+  let bestDist = distance2(r, g, b, best.r, best.g, best.b);
+
+  for (const c of NAMED_COLORS) {
+    const d = distance2(r, g, b, c.r, c.g, c.b);
+    if (d < bestDist) {
+      bestDist = d;
+      best = c;
+    }
+  }
+  return best.name; // O: returns the closest color name as a string
+}
